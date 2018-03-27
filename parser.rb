@@ -43,7 +43,7 @@ class ListNode
     elements = []
     tokens, next_token = tokens.next
     return nil unless next_token.is_a?(OpenParens)
-    until tokens.peek.is_a?(CloseParens) || tokens.peek.nil?
+    until tokens.peek.is_a?(CloseParens) || tokens.empty?
       tokens, parse_node = next_parse_node(tokens)
       return nil unless parse_node
       elements << parse_node
