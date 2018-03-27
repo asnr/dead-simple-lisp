@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-require './lexer'
-
 class Parser
   def self.parse(tokens)
     tokens_after_parse, list_node = ListNode.parse(tokens)
-    nil unless tokens_after_parse.empty?
+    nil unless list_node && tokens_after_parse.empty?
     list_node
   end
 end
