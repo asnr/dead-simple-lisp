@@ -26,7 +26,7 @@ class CloseParens < Token
 end
 
 class Name < Token
-  REGEX = /[[:alpha:]][[:alnum:]-]*/
+  REGEX = %r{([[:alpha:]][[:alnum:]-]*)|\+|-|\*|/}
 end
 
 class IntegerToken < Token
