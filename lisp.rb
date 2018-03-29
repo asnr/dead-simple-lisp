@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'pp'
 require './lexer'
 require './parser'
 
@@ -12,7 +13,7 @@ def main(code)
   puts ''
   puts 'Abstract syntax tree'
   puts '--------------------'
-  p syntax_tree
+  pp syntax_tree
 end
 
 if ARGV.length == 1
