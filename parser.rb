@@ -3,8 +3,7 @@
 class Parser
   def self.parse(tokens)
     tokens_after_parse, list_node = ListNode.parse(tokens)
-    nil unless list_node && tokens_after_parse.empty?
-    list_node
+    list_node if tokens_after_parse&.empty?
   end
 end
 
