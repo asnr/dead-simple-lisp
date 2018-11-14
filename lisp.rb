@@ -8,6 +8,7 @@ require './parser'
 def main(code)
   tokens = Lexer.new.tokenize(code)
   syntax_tree = Parser.parse(tokens)
+  result = syntax_tree.eval
   puts 'Code'
   puts '----'
   puts code
@@ -15,6 +16,10 @@ def main(code)
   puts 'Abstract syntax tree'
   puts '--------------------'
   pp syntax_tree
+  puts ''
+  puts 'Result'
+  puts '------'
+  puts result
 end
 
 if ARGV.length == 1

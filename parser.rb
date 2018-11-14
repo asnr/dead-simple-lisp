@@ -12,6 +12,10 @@ class IntegerNode
     @token = token
   end
 
+  def eval
+    @token.string.to_i
+  end
+
   def self.parse(tokens)
     tokens, next_token = tokens.next
     return nil unless next_token.is_a?(IntegerToken)
@@ -22,6 +26,10 @@ end
 class NameNode
   def initialize(token)
     @token = token
+  end
+
+  def eval
+    @token.string.to_sym
   end
 
   def self.parse(tokens)
@@ -36,6 +44,14 @@ class ListNode
 
   def initialize(elements)
     @elements = elements
+  end
+
+  def eval
+    function_name = @elements.first
+    arguments = @elements.drop(1)
+    evald_arguments = arguments.map(&:eval)
+    function = function_name.eval.to_proc
+    function.call(*evald_arguments)
   end
 
   def self.parse(tokens)
